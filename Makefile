@@ -105,9 +105,7 @@ flnjtree_ui.cc flnjtree_ui.h:flnjtree_ui.fl
 		$(FLUID) -c flnjtree_ui.fl
 
 package:lex.yy.c y.tab.c
-		@cd ..; cp -a phylotree /tmp; (cd /tmp/phylotree; find . -name "CVS"|xargs -i rm -fr {}; cd ..; \
-		mv phylotree njtree-$(VERSION); tar cf - njtree-$(VERSION) | bzip2 ) > phylotree/njtree-$(VERSION).tar.bz2; \
-		rm -fr /tmp/njtree-$(VERSION)
+		@(find . -type f | grep -v "\.svn" | xargs tar cf -) | gzip > njtree-$(VERSION).tar.gz
 
 clean:
 		rm -f gmon.out *.o a.out y.output libphylotree.a *.cp *.fn *.ky *.pg *.tp *.vr *.toc *.aux *.pdf *.log \

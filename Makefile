@@ -69,16 +69,8 @@ main.o:main.c
 tags:*.c *.cc phyml/*.c align_lib/*.c phyml/*.cc
 		ctags *.c *.cc *.l *.y phyml/*.c phyml/*.cc align_lib/*.c common/*.h common/*.c
 
-script:
-		@sed 's/my $$version.*/my $$version = "$(VERSION)";/' run_njtree.pl > 1; mv 1 run_njtree.pl; \
-		sed 's/my $$version.*/my $$version = "$(VERSION)";/' cgi_njtree.pl > 1; mv 1 cgi_njtree.pl; \
-		chmod 755 *.pl
-
 njtree.pdf:njtree.texi
 		texi2pdf njtree.texi
-
-tfdev.pdf:tfdev.texi
-		texi2pdf tfdev.texi
 
 y.tab.c y.tab.h:parser.y
 		$(YACC) -d $(YFLAGS) parser.y
@@ -110,7 +102,7 @@ package:lex.yy.c y.tab.c
 clean:
 		rm -f gmon.out *.o a.out y.output libphylotree.a *.cp *.fn *.ky *.pg *.tp *.vr *.toc *.aux *.pdf *.log \
 			njtree flnjtree timeout nh2pic flnjtree_ui.cc flnjtree_ui.h make_ng86 njtree-*.tar.bz2 ChangeLog.bak _phyml_boot*.txt \
-			y.tab.cc tags common/*.o
+			y.tab.cc tags common/*.o njtree-*.tar.gz
 
 cleanmore:clean
 		rm -f ng86_ds.h lex.yy.c y.tab.*

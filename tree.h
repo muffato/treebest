@@ -53,6 +53,7 @@ typedef struct __lih_SDIinfo
 	TreePtr *lost; /**< array of lost genes */
 	int n_spec_node; /**< used for tr_SDI() */
 	int is_confirmed_dup;
+	int sis; /* species intersection score */
 	char *spec_node; /**< used for tr_SDI() */
 } SDIinfo;
 

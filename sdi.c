@@ -39,6 +39,7 @@ SDIinfo *tr_alloc_sdi_cell()
 	s->n_spec_node = 0;
 	s->spec_node = 0;
 	s->is_confirmed_dup = 0;
+	s->sis = 0;
 	return s;
 }
 SDIinfo *tr_copy_sdi(SDIinfo *s)

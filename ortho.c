@@ -58,14 +58,24 @@ void tr_flag_confirmed(Tree *tree, const Tree *spec)
 		if (p->n == 0) { /* external node */
 			q[spec(p)->flag] = 1;
 		} else {
+			int c1, c2, *r;
 			SDIptr(p)->is_confirmed_dup = 0;
 			for (j = 0; j < p->n; ++j) {
-				int *r = tmp_array[p->node[j]->ftime];
+				r = tmp_array[p->node[j]->ftime];
 				for (k = 0; k < n_leaf; ++k) {
 					if (r[k] && q[k]) SDIptr(p)->is_confirmed_dup = 1;
 					else if (r[k]) q[k] = 1;
 				}
 			}
+			/* only consider binary trees */
+			q = tmp_array[p->node[0]->ftime];
+			r = tmp_array[p->node[1]->ftime];
+			c1 = c2 = 0;
+			for (k = 0; k < n_leaf; ++k) {
+				if (q[k] && r[k]) ++c1;
+				if (q[k] || r[k]) ++c2;
+			}
+			SDIptr(p)->sis = (int)(100.0 * c1 / c2 + 0.5);
 	 	}
 	}
 	for (i = 0; i < m; ++i)

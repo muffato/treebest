@@ -4,7 +4,7 @@ CFLAGS=		-g -Wall -O2 #-pg
 CXXFLAGS=	$(CFLAGS)
 YFLAGS= 
 DFLAGS=		-DUSE_GCC -DHAVE_PHYML -DLH3_ADDON # for phyml
-VERSION=	1.9.0
+VERSION=	1.9.0-1
 NJVERSION=	-DTR_VERSION="\"$(VERSION)\"" -DTR_BUILD=\"`date +%d%b%Y`\"
 LEX=		flex
 YACC=		bison --yacc

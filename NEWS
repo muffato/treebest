@@ -1,3 +1,17 @@
+Beta Release 1.9.1 (25 October, 2006)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This is a bug fix release. Now njtree can be correctly packaged. We also fixed
+a potential memory violation, although that never happened. A new function to
+calculate an "SIS" (Species Intersection Score) was added. This score is the
+percentage overlap between the two species sets that are descendant from the
+two daughters of a duplication node. Higher value indicate more reliablity.
+
+We are sorry for the obvious bugs in the previous release, and hope you enjoy
+the new one.
+
+
+
 Beta Release 1.9.0 (10 October, 2006)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 

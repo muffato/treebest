@@ -4,7 +4,7 @@ CFLAGS=		-g -Wall -O2 #-pg
 CXXFLAGS=	$(CFLAGS)
 YFLAGS= 
 DFLAGS=		-DUSE_GCC -DHAVE_PHYML -DLH3_ADDON # for phyml
-VERSION=	1.9.0-1
+VERSION=	1.9.1
 NJVERSION=	-DTR_VERSION="\"$(VERSION)\"" -DTR_BUILD=\"`date +%d%b%Y`\"
 LEX=		flex
 YACC=		bison --yacc
@@ -97,7 +97,9 @@ flnjtree_ui.cc flnjtree_ui.h:flnjtree_ui.fl
 		$(FLUID) -c flnjtree_ui.fl
 
 package:lex.yy.c y.tab.c
-		@(find . -type f | grep -v "\.svn" | xargs tar cf -) | gzip > njtree-$(VERSION).tar.gz
+		@(cd ..; mv njtree njtree-$(VERSION); \
+			(find njtree-$(VERSION) -type f | grep -v "\.svn" | xargs tar cf -) | gzip > njtree-$(VERSION).tar.gz; \
+			mv njtree-$(VERSION) njtree)
 
 clean:
 		rm -f gmon.out *.o a.out y.output libphylotree.a *.cp *.fn *.ky *.pg *.tp *.vr *.toc *.aux *.pdf *.log \

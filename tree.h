@@ -172,6 +172,8 @@ Ortholog *tr_ortho(Tree *root, const Tree *spec, int is_pseudo);
 /* compare bootstrapped ortholog relationship and the original ortholog */
 void tr_comp_ortho(Ortholog *ori, const Ortholog *bs);
 
+Tree *tr_trim_poor_leaves(const Tree *tree, Tree *spec, int thres);
+
 Tree *tr_mmerge(int n, Tree **forest);
 
 /* memory handler */

@@ -4,7 +4,7 @@ CFLAGS=		-g -Wall -O2 #-pg
 CXXFLAGS=	$(CFLAGS)
 YFLAGS= 
 DFLAGS=		-DUSE_GCC -DHAVE_PHYML -DLH3_ADDON # for phyml
-VERSION=	1.9.1
+VERSION=	1.9.1-1
 NJVERSION=	-DTR_VERSION="\"$(VERSION)\"" -DTR_BUILD=\"`date +%d%b%Y`\"
 LEX=		flex
 YACC=		bison --yacc
@@ -15,7 +15,8 @@ LIBOBJS=	lex.yy.o y.tab.o read.o nj.o utils1.o subtree.o sdi.o bs_nj.o \
 			reroot.o task.o output.o ortho.o cut_tree.o spec.o utils2.o \
 			align.o filter.o aln_mask.o prob_dist.o brent.o ng86_ds.o lost.o \
 			tree_plot.o cpp_utils.o read_aln.o pre_cons.o simulate.o compare.o \
-			order.o nhx_output.o nj2.o backtrans.o phyml.o mmerge.o est_len.o best.o
+			order.o nhx_output.o nj2.o backtrans.o phyml.o mmerge.o est_len.o \
+			best.o trimpoor.o
 FLOBJS=		flnjtree.o flnjtree_ui.o flglobal.o flworkspace.o flcallback.o
 INCLUDES=	-I.
 LIBS=		-L. -lphylotree -Lalign_lib -lalign -lm -Lphyml -lphyml

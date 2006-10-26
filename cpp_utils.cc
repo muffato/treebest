@@ -232,6 +232,7 @@ Tree *cpp_subtree_aux(const Tree *tree)
 			strcpy(q->name, p->name);
 			q->id = p->flag;
 			q->d = p->d;
+			q->bs = p->bs;
 			q->ptr = p->ptr;
 			cpp_copy_nhx_hash(q, p);
 			subnode[i] = q;
@@ -320,8 +321,35 @@ Tree *cpp_shrink_spec(Tree *spec_tree, int m, char **name)
 			spec_name[i++] = iter->key;
 	}
 	new_spec = cpp_subtree(spec_tree, hash->size(), spec_name);
+	tr_attach_id(new_spec);
 	delete[] spec_name;
 	delete hash;
+
+	Tree **node, *p;
+	node = tr_stack(new_spec, Tree*);
+	int j, k, n;
+	n = tr_expand_internal_node(new_spec, node);
+	for (i = 0; i < n; ++i) {
+		p = node[i];
+		for (j = k = 0; j < p->n; ++j)
+			if (p->node[j]->bs > 0) ++k;
+		p->bs = k;
+	}
+	free(node);
+	return new_spec;
+}
+Tree *cpp_shrink_spec_by_tree(Tree *spec_tree, Tree *gene_tree)
+{
+	Tree **node, *new_spec;
+	int n;
+	char **name;
+	node = tr_stack(gene_tree, Tree*);
+	name = tr_stack(gene_tree, char*);
+	n = tr_expand_leaf(gene_tree, node);
+	for (int i = 0; i < n; ++i)
+		name[i] = node[i]->name;
+	new_spec = cpp_shrink_spec(spec_tree, n, name);
+	free(node); free(name);
 	return new_spec;
 }
 /** \fn Tree *cpp_check_tree(Tree *tree)

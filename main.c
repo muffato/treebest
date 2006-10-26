@@ -37,6 +37,7 @@ int tr_estlen_task(int argc, char *argv[]);
 int best_task(int argc, char *argv[]);
 int plot_eps_task(int argc, char *argv[]);
 int ma_backtrans_task(int argc, char *argv[]);
+int tr_trimpoor_task(int argc, char *argv[]);
 
 void usage()
 {
@@ -66,6 +67,7 @@ void usage()
 	fprintf(stderr, "         simulate  simulate a gene tree\n");
 	fprintf(stderr, "         sortleaf  sort leaf order\n");
 	fprintf(stderr, "         estlen    estimate branch length\n");
+	fprintf(stderr, "         trimpoor  trim out leaves that affect the quality of a tree\n");
 	fprintf(stderr, "         root      root a tree by minimizing height\n\n");
 }
 int main(int argc, char *argv[])
@@ -121,6 +123,8 @@ int main(int argc, char *argv[])
 		return tr_sortleaf_task(argc-1, argv+1);
 	else if (strcmp(argv[1], "estlen") == 0)
 		return tr_estlen_task(argc-1, argv+1);
+	else if (strcmp(argv[1], "trimpoor") == 0)
+		return tr_trimpoor_task(argc-1, argv+1);
 	else if (strcmp(argv[1], "spec") == 0) {
 		extern char *tr_species_tree_string;
 		printf("%s\n", tr_species_tree_string);

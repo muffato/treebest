@@ -17,6 +17,7 @@ Tree *cpp_subtree(Tree *root, int m, char **name);
 Tree *cpp_subtree_aux(const Tree *root);
 Tree **cpp_get_spec_links(const Tree *tree, const Tree *spec);
 Tree *cpp_shrink_spec(Tree *spec_tree, int m, char **name);
+Tree *cpp_shrink_spec_by_tree(Tree *spec_tree, Tree *gene_tree);
 Tree *cpp_check_tree(Tree *tree);
 void cpp_set_leaf_order(Tree *src, Tree *dst, int def_val);
 Tree *cpp_subtree_spec(Tree *root, Tree *spec, int n, char **spec_name);

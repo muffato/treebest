@@ -147,6 +147,7 @@ int tr_fill_spec(Task *task, const char *fn)
 	for (i = 1; i < n; ++i)
 		tr_delete_tree(spec[i]);
 	free(spec);
+	task->spec_tree = cpp_post_spec_tree(task->spec_tree, 0);
 	if (fp != stdin) fclose(fp);
 	return 0;
 }

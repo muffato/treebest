@@ -1,10 +1,10 @@
 CC=			gcc
 CXX=		g++
-CFLAGS=		-g -Wall -O2 #-pg
+CFLAGS=		-g -Wall -O2 -fomit-frame-pointer #-pg
 CXXFLAGS=	$(CFLAGS)
 YFLAGS= 
 DFLAGS=		-DUSE_GCC -DHAVE_PHYML -DLH3_ADDON # for phyml
-VERSION=	1.9.1-2
+VERSION=	1.9.1-3
 NJVERSION=	-DTR_VERSION="\"$(VERSION)\"" -DTR_BUILD=\"`date +%d%b%Y`\"
 LEX=		flex
 YACC=		bison --yacc
@@ -51,7 +51,8 @@ njtree:lib-recur main.o
 		$(CXX) $(CFLAGS) $(DFLAGS) main.o -o $@ $(LIBS)
 
 flnjtree:lib-recur $(FLOBJS)
-		$(CXX) $(CXXFLAGS) $(DFLAGS) -o $@ $(FLOBJS) `$(FLTKCFG) --cxxflags` `$(FLTKCFG) --ldstaticflags` $(LIBS)
+		$(CXX) $(CXXFLAGS) $(DFLAGS) -o $@ $(FLOBJS) `$(FLTKCFG) --cxxflags` `$(FLTKCFG) --ldstaticflags` $(LIBS); \
+		$(FLTKCFG) --post $@
 
 timeout:timeout.o
 		$(CC) $(CFLAGS) $(DFLAGS) timeout.o -o $@

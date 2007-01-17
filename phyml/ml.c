@@ -1007,8 +1007,9 @@ matrix *ML_Dist_fixed(allseq *data, model *mod, int n_cat)
 		     tmpdata->c_seq[1]->name,
 		     tmpdata->c_seq[0]->name);
 #else
-		fprintf(stderr, "Large distance encountered between %s and %s sequences\n",
-			tmpdata->c_seq[1]->name, tmpdata->c_seq[0]->name);
+		  if (!lh3_revision_is_quiet)
+			  fprintf(stderr, "Large distance encountered between %s and %s sequences\n",
+					  tmpdata->c_seq[1]->name, tmpdata->c_seq[0]->name);
 #endif
 	      d_max = DIST_MAX;
 	    }

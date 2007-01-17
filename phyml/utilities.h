@@ -25,6 +25,10 @@ the GNU public licence.  See http://www.opensource.org for details.
 #include "lh3_addon.h"
 #endif
 
+#ifdef LH3_REVISION
+extern int lh3_revision_is_quiet;
+#endif
+
 #define VERSION "v2.4.5"
 
 extern int    NODE_DEG_MAX;

@@ -18,6 +18,9 @@ the GNU public licence.  See http://www.opensource.org for details.
 #include "bionj.h"
 #include "simu.h"
 
+#ifdef LH3_REVISION
+int lh3_revision_is_quiet = 0;
+#endif
 
 int    NODE_DEG_MAX;
 int    BRENT_ITMAX;
@@ -3899,13 +3902,22 @@ model *Copy_Model(model *ori)
           cpy->rr_param_values[i]  = ori->rr_param_values[i];
           cpy->rr_param[i] = cpy->rr_param_values+i;
       }
-  
+#ifndef LH3_REVISION
   For(i,cpy->ns) 
       {
           cpy->pi[i]          = ori->pi[i];
           cpy->user_b_freq[i] = ori->user_b_freq[i];
       }
-  
+#else
+  For(i,cpy->ns) 
+      {
+          cpy->pi[i]          = ori->pi[i];
+	  }
+  For(i,4)
+      {
+          cpy->user_b_freq[i] = ori->user_b_freq[i];
+      }
+#endif
   For(i,cpy->n_catg) 
       {
           cpy->r_proba[i] = ori->r_proba[i]; 

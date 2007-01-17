@@ -29,6 +29,7 @@ BestConfig *best_init_option()
 	bo->is_collapse_splice = 0;
 	bo->is_phyml = 1;
 	bo->is_debug = 0;
+	bo->is_quiet = 0;
 	bo->is_mask_lss = 1;
 	bo->is_phyml_spec = 1;
 	bo->is_phyml_cons = 0;
@@ -87,6 +88,7 @@ Tree *best_core(BestConfig *bo)
 	PhymlConfig *pc = 0;
 	Tree *tree, *t_phyml_aa, *t_phyml_nt, *t_nj_dn, *t_nj_ds, *t_nj_mm, *t_nj_dn_cons, *t_nj_mm_cons, *t_final;
 	MultiAlign *tma;
+	extern int lh3_revision_is_quiet;
 
 	assert(bo->ma);
 	assert(bo->stree);
@@ -105,6 +107,7 @@ Tree *best_core(BestConfig *bo)
 	/* initialization */
 	ma_init_nucl_data();
 	if (bo->is_phyml) phyml_init();
+	lh3_revision_is_quiet = bo->is_quiet;
 	if (bo->is_sequenced_only) cpp_shrink_ma_by_spec(bo->ma, bo->stree);
 	if (bo->is_contract_stree) {
 		tree = cpp_shrink_spec(bo->stree, bo->ma->n, bo->ma->name);
@@ -321,6 +324,7 @@ static int best_usage()
 	fprintf(stderr, "         -r          discard species that do not appear at all\n\n");
 	fprintf(stderr, "Output Options:\n\n");
 	fprintf(stderr, "         -D          output some debug information\n");
+	fprintf(stderr, "         -q          suppress part of PHYML warnings\n");
 	fprintf(stderr, "         -p STR      prefix of intermediate trees                    [null]\n");
 	fprintf(stderr, "         -o FILE     output tree                                     [null]\n\n");
 	fprintf(stderr, "Alignment Preprocessing Options:\n\n");
@@ -350,8 +354,9 @@ BestConfig *best_command_line_options(int argc, char *argv[])
 	FILE *fp;
 
 	bo = best_init_option();
-	while ((c = getopt(argc, argv, "srDNgSPAF:c:C:f:p:o:k:a:d:l:L:b:")) >= 0) {
+	while ((c = getopt(argc, argv, "qsrDNgSPAF:c:C:f:p:o:k:a:d:l:L:b:")) >= 0) {
 		switch (c) {
+			case 'q': bo->is_quiet = 1; break;
 			case 's': bo->is_sequenced_only = 1; break;
 			case 'r': bo->is_contract_stree = 1; break;
 			case 'D': bo->is_debug = 1; break;

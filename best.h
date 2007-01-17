@@ -23,6 +23,7 @@ typedef struct
 	int is_sequenced_only;
 	int is_collapse_splice;
 	int is_mask_lss;
+	int is_quiet;
 	int qual_thres;
 
 	/* PHYML related, passed to PhymlConfig */

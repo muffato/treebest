@@ -30,11 +30,11 @@ char *tr_species_tree_string="\
       CHICK*-9031)Amniota-32524,\
      XENTR*-8364.frog)Tetrapoda-32523,\
     (BRARE*-7955.zebrafish, \
-     ((TETNG*-99983.pufferfish,FUGRU*-31033.pufferfish)Tetraodontidae-31031,\
-      (GASAC-*69293.stickleback,ORYLA-*8090.ricefish)Smegmamorpha-129949)Percomorpha-32485)Clupeocephala-186625)Euteleostomi-117571,\
-   (CIOIN*-7719,CIOSA-*51511)Ciona-7718)Chordata-7711,\
+     ((TETNG*-99883.pufferfish,FUGRU*-31033.pufferfish)Tetraodontidae-31031,\
+      (GASAC*-69293.stickleback,ORYLA*-8090.ricefish)Smegmamorpha-129949)Percomorpha-32485)Clupeocephala-186625)Euteleostomi-117571,\
+   (CIOIN*-7719,CIOSA*-51511)Ciona-7718)Chordata-7711,\
   (((DROME*-7227.fly,DROPS*-7237.fly)Sophophora-32341,\
-    (AEDAE-*7159.mosquito,ANOGA*-7165.mosquito)Culicidae-7157)Diptera-7147, \
+    (AEDAE*-7159.mosquito,ANOGA*-7165.mosquito)Culicidae-7157)Diptera-7147, \
    APIME-*7460.honeybee)Endopterygota-33392,\
   SCHMA*-6183.fluke,\
   (CAEEL*-6239.worm,CAEBR*-6238.worm,CAERE*-31234.worm)Caenorhabditis-6237)Bilateria-33213)Eukaryota-2759;";

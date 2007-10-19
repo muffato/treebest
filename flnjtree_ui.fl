@@ -7,7 +7,7 @@ decl {\#include "flglobal.h"} {}
 Function {make_main_window(void *global)} {} {
   code {FNglobal *g = (FNglobal*)global;} {}
   Fl_Window {} {
-    label FLNJTREE
+    label FLtreeBeST
     xywh {340 105 604 657} type Double labelsize 11 resizable visible
   } {
     Fl_Tabs {} {open
@@ -97,7 +97,7 @@ Function {make_main_window(void *global)} {} {
     }
     Fl_Button {} {
       label {&Help}
-      callback {fl_message("FLnjtree-0.2.0, FLTK GUI to njtree.\\nWritten by Heng Li <lh3@@sanger.ac.uk>.\\n\\n(Move mouse over buttons to see instructions.)");}
+      callback {fl_message("FLtreeBeST-0.2.0, FLTK GUI to TreeBeST.\\nWritten by Heng Li <lh3@@sanger.ac.uk>.\\n\\n(Move mouse over buttons to see instructions.)");}
       tooltip {help (^h)} xywh {528 634 35 20} box PLASTIC_UP_BOX shortcut 0x40068 labelsize 11
     }
     Fl_Button {} {

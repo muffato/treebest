@@ -4,13 +4,13 @@ CFLAGS=		-Wall -O2 -fomit-frame-pointer -arch i386 -arch ppc #-pg
 CXXFLAGS=	$(CFLAGS)
 YFLAGS= 
 DFLAGS=		-DUSE_GCC -DHAVE_PHYML -DLH3_ADDON # for phyml
-VERSION=	1.9.1-3
+VERSION=	1.9.1-4
 NJVERSION=	-DTR_VERSION="\"$(VERSION)\"" -DTR_BUILD=\"`date +%d%b%Y`\"
 LEX=		flex
 YACC=		bison --yacc
 FLUID=		fluid
 FLTKCFG=	fltk-config
-PROG=		njtree
+PROG=		treebest
 LIBOBJS=	lex.yy.o y.tab.o read.o nj.o utils1.o subtree.o sdi.o bs_nj.o \
 			reroot.o task.o output.o ortho.o cut_tree.o spec.o utils2.o \
 			align.o filter.o aln_mask.o prob_dist.o brent.o ng86_ds.o lost.o \
@@ -47,10 +47,10 @@ lib:libphylotree.a
 libphylotree.a:$(LIBOBJS)
 		libtool -static -o $@ $(LIBOBJS)
 
-njtree:lib-recur main.o
+treebest:lib-recur main.o
 		$(CXX) $(CFLAGS) $(DFLAGS) main.o -o $@ $(LIBS)
 
-flnjtree:lib-recur $(FLOBJS)
+fltreebest:lib-recur $(FLOBJS)
 		$(CXX) $(CXXFLAGS) $(DFLAGS) -o $@ $(FLOBJS) `$(FLTKCFG) --cxxflags` `$(FLTKCFG) --ldstaticflags` $(LIBS); \
 		$(FLTKCFG) --post $@
 
@@ -71,8 +71,8 @@ main.o:main.c
 tags:*.c *.cc phyml/*.c align_lib/*.c phyml/*.cc
 		ctags *.c *.cc *.l *.y phyml/*.c phyml/*.cc align_lib/*.c common/*.h common/*.c
 
-njtree.pdf:njtree.texi
-		texi2pdf njtree.texi
+treebest.pdf:treebest.texi
+		texi2pdf treebest.texi
 
 y.tab.c y.tab.h:parser.y
 		$(YACC) -d $(YFLAGS) parser.y
@@ -99,14 +99,15 @@ flnjtree_ui.cc flnjtree_ui.h:flnjtree_ui.fl
 		$(FLUID) -c flnjtree_ui.fl
 
 package:lex.yy.c y.tab.c
-		@(cd ..; mv njtree njtree-$(VERSION); \
-			(find njtree-$(VERSION) -type f | grep -v "\.svn" | xargs tar cf -) | gzip > njtree-$(VERSION).tar.gz; \
-			mv njtree-$(VERSION) njtree)
+		@(cd ..; mv treebest treebest-$(VERSION); \
+			(find treebest-$(VERSION) -type f | grep -v "\.svn" | xargs tar cf -) | gzip > treebest-$(VERSION).tar.gz; \
+			mv treebest-$(VERSION) treebest)
 
 clean:
 		rm -f gmon.out *.o a.out y.output libphylotree.a *.cp *.fn *.ky *.pg *.tp *.vr *.toc *.aux *.pdf *.log \
-			njtree flnjtree timeout nh2pic flnjtree_ui.cc flnjtree_ui.h make_ng86 njtree-*.tar.bz2 ChangeLog.bak _phyml_boot*.txt \
-			y.tab.cc tags common/*.o njtree-*.tar.gz
+			treebest fltreebest timeout nh2pic flnjtree_ui.cc flnjtree_ui.h make_ng86 fltreebest-*.tar.bz2 \
+			ChangeLog.bak _phyml_boot*.txt \
+			y.tab.cc tags common/*.o treebest-*.tar.gz *~
 
 cleanmore:clean
 		rm -f ng86_ds.h lex.yy.c y.tab.*

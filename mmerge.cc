@@ -448,7 +448,7 @@ void tr_common_forest(int n, Tree **forest)
 static int tr_mmerge_usage()
 {
 	fprintf(stderr, "\n");
-	fprintf(stderr, "Usage  : njtree mmerge [-r] <forest>\n\n");
+	fprintf(stderr, "Usage  : treebest mmerge [-r] <forest>\n\n");
 	fprintf(stderr, "Options: -r      reroot\n\n");
 	return 1;
 }

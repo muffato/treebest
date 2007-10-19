@@ -37,7 +37,7 @@ void phyml_init()
 int phyml_usage()
 {
 	fprintf(stderr, "\n");
-	fprintf(stderr, "Usage:   njtree phyml [options] <alignment> [<tree>]\n\n");
+	fprintf(stderr, "Usage:   treebest phyml [options] <alignment> [<tree>]\n\n");
 	fprintf(stderr, "General Options:\n\n");
 	fprintf(stderr, "         -t task     build | opt | loglk | dist                          [build]\n");
 	fprintf(stderr, "         -n          the input is a nucleotide alignment\n");

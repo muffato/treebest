@@ -175,7 +175,7 @@ Tree *tr_shrink_spec(Tree *spec)
 static int tr_simulate_usage()
 {
 	fprintf(stderr, "\n");
-	fprintf(stderr, "Usage:   njtree simulate [options]\n\n");
+	fprintf(stderr, "Usage:   treebest simulate [options]\n\n");
 	fprintf(stderr, "Options: -d FNUM        duplication probability [0.05]\n");
 	fprintf(stderr, "         -l FNUM        loss probability [0.01]\n");
 	fprintf(stderr, "         -p FNUM        loss probability after duplication [0.25]\n");

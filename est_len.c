@@ -44,7 +44,7 @@ void tr_est_len(Tree *tree, Matrix *mat, const char *tag)
 }
 static int tr_estlen_usage()
 {
-	fprintf(stderr, "Usage: njtree estlen <tree> <matrix> <tag>\n");
+	fprintf(stderr, "Usage: treebest estlen <tree> <matrix> <tag>\n");
 	return 1;
 }
 int tr_estlen_task(int argc, char *argv[])

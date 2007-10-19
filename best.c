@@ -314,7 +314,7 @@ Tree *best_core(BestConfig *bo)
 static int best_usage()
 {
 	fprintf(stderr, "\n");
-	fprintf(stderr, "Usage  : njtree best [options] <CDS_alignment>\n\n");
+	fprintf(stderr, "Usage  : treebest best [options] <CDS_alignment>\n\n");
 	fprintf(stderr, "General Options:\n\n");
 	fprintf(stderr, "         -P          skip PHYML\n");
 	fprintf(stderr, "         -S          ignore the prob. of gene evolution (NOT recommended)\n");

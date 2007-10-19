@@ -247,7 +247,7 @@ int tr_fill_fp(Task *task, const char *fn)
  */
 static int tr_subtree_usage()
 {
-	fprintf(stderr, "Usage: njtree subtree <tree> <list>\n");
+	fprintf(stderr, "Usage: treebest subtree <tree> <list>\n");
 	return 1;
 }
 int tr_subtree_task(int argc, char *argv[])
@@ -279,7 +279,7 @@ int tr_subtree_task(int argc, char *argv[])
  */
 static int tr_treedist_usage()
 {
-	fprintf(stderr, "Usage: njtree treedist <tree1> <tree2>\n");
+	fprintf(stderr, "Usage: treebest treedist <tree1> <tree2>\n");
 	return 1;
 }
 int tr_treedist_task(int argc, char *argv[])
@@ -305,7 +305,7 @@ int tr_treedist_task(int argc, char *argv[])
 static int tr_sdi_usage()
 {
 	fprintf(stderr, "\n");
-	fprintf(stderr, "Usage  : njtree sdi [-r|-H|-R|-m <tree0>|-l <spec_list>] <tree>\n\n");
+	fprintf(stderr, "Usage  : treebest sdi [-r|-H|-R|-m <tree0>|-l <spec_list>] <tree>\n\n");
 	fprintf(stderr, "Options: -r         reroot\n");
 	fprintf(stderr, "         -c         use core species tree instead of the default one\n");
 	fprintf(stderr, "         -H         reroot by minimizing tree height, instead of by\n");
@@ -409,7 +409,7 @@ int tr_sdi_task(int argc, char *argv[])
  */
 static int tr_ortho_usage()
 {
-	fprintf(stderr, "Usage: njtree ortho <tree>\n");
+	fprintf(stderr, "Usage: treebest ortho <tree>\n");
 	return 1;
 }
 int tr_ortho_task(int argc, char *argv[])
@@ -438,7 +438,7 @@ int tr_ortho_task(int argc, char *argv[])
 }
 static int tr_root_usage()
 {
-	fprintf(stderr, "Usage: njtree root <tree>\n");
+	fprintf(stderr, "Usage: treebest root <tree>\n");
 	return 1;
 }
 int tr_root_task(int argc, char *argv[])
@@ -464,7 +464,7 @@ int tr_root_task(int argc, char *argv[])
  */
 static int tr_reformat_usage()
 {
-	fprintf(stderr, "Usage:   njtree format [-1] <tree>\n");
+	fprintf(stderr, "Usage:   treebest format [-1] <tree>\n");
 	return 1;
 }
 int tr_reformat_task(int argc, char *argv[])
@@ -506,7 +506,7 @@ int tr_reformat_task(int argc, char *argv[])
 static int tr_filter_usage()
 {
 	fprintf(stderr, "\n");
-	fprintf(stderr, "Usage:   njtree filter [options] <alignment>\n\n");
+	fprintf(stderr, "Usage:   treebest filter [options] <alignment>\n\n");
 	fprintf(stderr, "Options: -n         nucleotide alignment\n");
 	fprintf(stderr, "         -g         collapse alternative splicing\n");
 	fprintf(stderr, "         -M         do not apply alignment mask\n");
@@ -548,7 +548,7 @@ int tr_filter_task(int argc, char *argv[])
  */
 static int tr_mfa2aln_usage()
 {
-	fprintf(stderr, "Usage: njtree mfa2aln [-n] <fasta_align>\n");
+	fprintf(stderr, "Usage: treebest mfa2aln [-n] <fasta_align>\n");
 	return 1;
 }
 int tr_mfa2aln_task(int argc, char *argv[])
@@ -575,7 +575,7 @@ int tr_mfa2aln_task(int argc, char *argv[])
  */
 static int tr_leaf_usage()
 {
-	fprintf(stderr, "Usage: njtree leaf <nh_tree>\n");
+	fprintf(stderr, "Usage: treebest leaf <nh_tree>\n");
 	return 1;
 }
 int tr_leaf_task(int argc, char *argv[])
@@ -606,7 +606,7 @@ int tr_leaf_task(int argc, char *argv[])
  */
 static int tr_trans_usage()
 {
-	fprintf(stderr, "Usage: njtree trans <nucl_alignment>\n");
+	fprintf(stderr, "Usage: treebest trans <nucl_alignment>\n");
 	return 1;
 }
 int tr_trans_task(int argc, char *argv[])
@@ -629,7 +629,7 @@ int tr_trans_task(int argc, char *argv[])
  */
 static int tr_distmat_usage()
 {
-	fprintf(stderr, "Usage: njtree distmat <dn|ds|dm|jtt|kimura|mm|dns> <alignment>\n");
+	fprintf(stderr, "Usage: treebest distmat <dn|ds|dm|jtt|kimura|mm|dns> <alignment>\n");
 	return 1;
 }
 int tr_distmat_task(int argc, char *argv[])
@@ -706,7 +706,7 @@ int tr_distmat_task(int argc, char *argv[])
 }
 static int tr_sortleaf_usage()
 {
-	fprintf(stderr, "Usage: njtree sortleaf <tree1> [<tree2>]\n");
+	fprintf(stderr, "Usage: treebest sortleaf <tree1> [<tree2>]\n");
 	return 1;
 }
 int tr_sortleaf_task(int argc, char *argv[])
@@ -748,7 +748,7 @@ int tr_sortleaf_task(int argc, char *argv[])
 static int tr_build_usage()
 {
 	fprintf(stderr, "\n");
-	fprintf(stderr, "Usage  : njtree nj [options] <input_file>\n");
+	fprintf(stderr, "Usage  : treebest nj [options] <input_file>\n");
 	fprintf(stderr, "\n");
 	fprintf(stderr, "Options: -c FILE    constrained tree(s) in NH format [null]\n");
 	fprintf(stderr, "         -m FILE    tree to be compared [null]\n");

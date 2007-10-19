@@ -85,17 +85,18 @@ void tr_pre_bootstrap(Tree *tree, int is_node)
  *  \param samp Resampled tree.
  *  \param is_node Mode. 0 for the conventional branch mode and 1 for node mode.
  *
- * This function compares a tree to a bootstrapped tree samp. If a node is
- * supported by bootstraped tree, Tree::bs will be increased by one.
- * The worst-case time complexity is O(N^3), but with the help of hash technology, the
- * real complexity approaches O(N^2). If we use more hash, the time might
- * be reduced to O(N). Nonetheless, I think the speed here is enough.
+ * This function compares a tree to a bootstrapped tree samp. If a node
+ * is supported by bootstraped tree, Tree::bs will be increased by one.
+ * The worst-case time complexity is O(N^3), but with the help of hash
+ * technology, the real complexity approaches O(N^2). If we use more
+ * hash, the time might be reduced to O(N). Nonetheless, I think the
+ * speed here is enough.
  *
- * Branch mode realizes the conventional method to calculate bootstrap values.
- * Such values are actually calculated for a branch, instead of a node.
- * Node mode is initiated by NJTREE. It evaluates the accuracy of the tri-furcation
- * at a node. So node mode is only applied for a binary tree, but it
- * is more rigorous.
+ * Branch mode realizes the conventional method to calculate bootstrap
+ * values.  Such values are actually calculated for a branch, instead of
+ * a node.  Node mode is initiated by TreeBeST. It evaluates the
+ * accuracy of the tri-furcation at a node. So node mode is only applied
+ * for a binary tree, but it is more rigorous.
  */
 void tr_update_bootstrap(Tree *tree, const Tree *samp, int is_node)
 {

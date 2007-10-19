@@ -42,10 +42,10 @@ int tr_trimpoor_task(int argc, char *argv[]);
 void usage()
 {
 	fprintf(stderr, "\n");
-	fprintf(stderr, "Program: Neighbour-Joining Tree Builder\n");
+	fprintf(stderr, "Program: TreeBeST (gene Tree Building guided by Species Tree)\n");
 	fprintf(stderr, "Version: %s build %s\n", TR_VERSION, TR_BUILD);
 	fprintf(stderr, "Contact: Heng Li <lh3@sanger.ac.uk>\n\n");
-	fprintf(stderr, "Usage:   njtree <command> [options]\n\n");
+	fprintf(stderr, "Usage:   treebest <command> [options]\n\n");
 	fprintf(stderr, "Command: nj        build neighbour-joining tree, SDI, rooting\n");
 	fprintf(stderr, "         best      build tree with the help of a species tree\n");
 	fprintf(stderr, "         phyml     build phyml tree\n");

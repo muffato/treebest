@@ -89,7 +89,7 @@ MultiAlign *ma_back_trans(MultiAlign *aa, FILE *fp, float threshold)
 }
 static int ma_backtrans_usage()
 {
-	fprintf(stderr, "Usage: njtree backtrans [-t <thres>] <aa_aln> <nt_seq>\n");
+	fprintf(stderr, "Usage: treebest backtrans [-t <thres>] <aa_aln> <nt_seq>\n");
 	return 1;
 }
 int ma_backtrans_task(int argc, char *argv[])

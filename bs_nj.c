@@ -82,7 +82,7 @@ Tree *tr_build_tree(Task *task)
 	}
 	task->ortho = tr_ortho(tree, task->spec_tree, task->is_pseudo_ortho); /* find ortholog */
 	tr_delete_tree_SDIptr(tree); /* Tree::ptr is useless now. Free it for bootstrap */
-	/* In flnjtree, task->func is used to show the progress of bootstrapping */
+	/* In fltreebest, task->func is used to show the progress of bootstrapping */
 	if (task->func) task->func(1.0 / (1.0 + task->bs_time));
 
 	if (task->bs_time > 0) { /* bootstrap */

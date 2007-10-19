@@ -212,7 +212,7 @@ void plot_eps(FILE *eps, Tree *tree, PlotParam *pp)
 static int plot_eps_usage()
 {
 	fprintf(stderr, "\n");
-	fprintf(stderr, "Usage:   njtree export [options] <tree>\n\n");
+	fprintf(stderr, "Usage:   treebest export [options] <tree>\n\n");
 	fprintf(stderr, "Options: -x NUM      width [640]\n");
 	fprintf(stderr, "         -y NUM      height [480]\n");
 	fprintf(stderr, "         -m NUM      margin [20]\n");

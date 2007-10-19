@@ -122,7 +122,7 @@ int tr_trimpoor_task(int argc, char *argv[]);
 }
 int tr_trimpoor_usage()
 {
-	fprintf(stderr, "njtree trimpoor <tree> [<threshold>=0]\n");
+	fprintf(stderr, "treebest trimpoor <tree> [<threshold>=0]\n");
 	return 1;
 }
 int tr_trimpoor_task(int argc, char *argv[])

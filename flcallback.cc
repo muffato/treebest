@@ -81,7 +81,7 @@ void cb_phyml_browse(Fl_Widget *w, void *global)
 }
 void cb_phyml_tree(Fl_Widget *w, void *global)
 {
-	if (!fl_ask("Building ML tree is usually very slow.\nFLtreeBeST might not respond for a long time.\nBe patient, or explicitly kill the program.")) {
+	if (fl_choice("Building ML tree is usually very slow.\nFLtreeBeST might not respond for a long time.\nBe patient, or explicitly kill the program.", "Cancel", "No", "Yes") != 2) {
 		return;
 	}
 	FNglobal *g = (FNglobal*)global;

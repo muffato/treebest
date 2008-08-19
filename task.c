@@ -728,7 +728,7 @@ int tr_sortleaf_task(int argc, char *argv[])
 	}
 	spec_tree = tr_default_spec_tree();
 	for (i = 0; i < n; ++i) {
-		if (tree) cpp_set_leaf_order(tree, forest[i], tree->n_leaf);
+		if (tree) cpp_set_leaf_order(tree, forest[i], forest[i]->n_leaf);
 		else {
 			tr_SDI(forest[i], spec_tree, 0);
 			tr_set_spec_leaf_order(forest[i]);

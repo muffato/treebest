@@ -14,6 +14,7 @@ typedef struct
 {
 	void *ptr;
 	unsigned key;
+	int cnt;
 	Tree *left; /** point to the left-most child */
 } OrderInfo;
 
@@ -38,6 +39,7 @@ static void dump_ptr(Tree *tree)
 		p = node[i];
 		q->left = (p->n == 0)? p : 0;
 		q->key = (p->n == 0)? ((p->flag << ORDER_SHIFT) | p->flag) : 0;
+		q->cnt = (p->n == 0)? (p->flag < tree->n_leaf? 1 : 0) : 0;
 		q->ptr = p->ptr;
 		p->ptr = q;
 	}
@@ -88,7 +90,7 @@ void tr_set_spec_leaf_order(Tree *tree)
 void tr_order_core(Tree *tree)
 {
 	Tree **node, *p, *q;
-	int i, j, n;
+	int i, j, n, y;
 	float x;
 
 	if (tree == 0) return;
@@ -102,8 +104,13 @@ void tr_order_core(Tree *tree)
 				q = p->node[0]; p->node[0] = p->node[1]; p->node[1] = q;
 			}
 		} else algo_qsort(p->node, p->n);
-		for (x = 0.0, j = 0; j < p->n; ++j) x += (Oinfo(p->node[j])->key >> ORDER_SHIFT) / ORDER_TIMES * p->node[j]->n_leaf;
-		Oinfo(p)->key = ((int)(x * ORDER_TIMES / p->n_leaf + 0.5) << ORDER_SHIFT) | (Oinfo(p->node[0])->key & ORDER_MASK);
+		for (x = 0.0, j = 0, y = 0; j < p->n; ++j) {
+			y += Oinfo(p->node[j])->cnt;
+			x += (Oinfo(p->node[j])->key >> ORDER_SHIFT) / ORDER_TIMES * Oinfo(p->node[j])->cnt;
+		}
+		Oinfo(p)->cnt = y;
+		if (y) Oinfo(p)->key = ((int)(x * ORDER_TIMES / y + 0.5) << ORDER_SHIFT) | (Oinfo(p->node[0])->key & ORDER_MASK);
+		else Oinfo(p)->key = 0xfffffffful << ORDER_SHIFT | (Oinfo(p->node[0])->key & ORDER_MASK);
 		Oinfo(p)->left = Oinfo(p->node[0])->left;
 	}
 	restore_ptr(tree);

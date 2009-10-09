@@ -442,6 +442,7 @@ void tr_common_forest(int n, Tree **forest)
 		tr_delete_tree(forest[i]);
 		forest[i] = tree;
 	}
+        free(name);
 	delete set;
 }
 
@@ -449,19 +450,29 @@ static int tr_mmerge_usage()
 {
 	fprintf(stderr, "\n");
 	fprintf(stderr, "Usage  : treebest mmerge [-r] <forest>\n\n");
-	fprintf(stderr, "Options: -r      reroot\n\n");
+	fprintf(stderr, "Options: -r         reroot\n");
+	fprintf(stderr, "         -s FILE    species tree [default taxa tree]\n\n");
 	return 1;
 }
 int tr_mmerge_task(int argc, char *argv[])
 {
 	int i, c, is_reroot, n;
-	FILE *fp;
+	FILE *fp, *fp_spec;
 	Tree **forest, *spec_tree, *tree;
 
+	spec_tree = 0;
+
 	is_reroot = 0;
-	while ((c = getopt(argc, argv, "r")) >= 0) {
+	while ((c = getopt(argc, argv, "s:r")) >= 0) {
 		switch (c) {
 			case 'r': is_reroot = 1; break;
+			case 's': fp_spec = tr_get_fp(optarg);
+					  if (fp_spec) {
+						  spec_tree = tr_parse_first(fp_spec);
+						  fclose(fp_spec);
+						  cpp_post_spec_tree(spec_tree, 0);
+					  }
+					  break;
 		}
 	}
 	if (argc == optind) return tr_mmerge_usage();
@@ -469,7 +480,7 @@ int tr_mmerge_task(int argc, char *argv[])
 	forest = tr_parse(fp, &n);
 	fclose(fp);
 	tr_common_forest(n, forest);
-	spec_tree = tr_default_spec_tree();
+	if (!spec_tree) spec_tree = tr_default_spec_tree();
 	for (i = 0; i < n; ++i) {
 		if (is_reroot)
 			forest[i] = tr_root_by_sdi(forest[i], spec_tree);
